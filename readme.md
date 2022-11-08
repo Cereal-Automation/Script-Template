@@ -1,4 +1,4 @@
-# My Cereal script
+# Cereal script template
 
 ## Getting Started
 
