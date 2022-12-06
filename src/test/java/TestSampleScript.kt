@@ -1,4 +1,3 @@
-import com.cereal.script.sample.SampleConfigWebsite
 import com.cereal.script.sample.SampleConfiguration
 import com.cereal.script.sample.SampleScript
 import com.cereal.test.TestScriptRunner
@@ -23,7 +22,6 @@ class TestSampleScript {
             every { keyInteger() } returns 100
             every { keyFloat() } returns 101.0f
             every { keyDouble() } returns 102.0
-            every { dropdownOption() } returns SampleConfigWebsite.FIRST_OPTION
         }
         val componentProvider = TestComponentProvider()
 

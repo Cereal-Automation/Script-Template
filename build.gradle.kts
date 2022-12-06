@@ -38,6 +38,6 @@ tasks {
     }
 
     jar {
-        archiveFileName.set("script-release.jar")
+        archiveFileName.set("release.jar")
     }
 }

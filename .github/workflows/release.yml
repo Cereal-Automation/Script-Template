@@ -26,12 +26,12 @@ jobs:
           java-version: 11
       - name: Build
         run:
-          ./gradlew cereal-script-sample:jar
+          ./gradlew jar
       - name: Obfuscate
         run:
-          ./gradlew cereal-script-sample:obfuscateArtifact
+          ./gradlew obfuscateArtifact
       - name: Store obfuscated jar
         uses: actions/upload-artifact@v3
         with:
-          name: script-release-jar
-          path: cereal-script-sample/build/obfuscated/script-release.jar
+          name: script-${{ github.ref_name }}-release
+          path: build/obfuscated/release.jar
