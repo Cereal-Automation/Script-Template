@@ -13,7 +13,7 @@ buildscript {
 task("obfuscateArtifact", type: ProGuardTask, dependsOn: jar) {
     description = "Obfuscates source files"
 
-    def artifactName = "script-release.jar"
+    def artifactName = "release.jar"
     def obfuscatedFolder = "$buildDir/obfuscated"
 
     injars "$buildDir/libs/$artifactName"
