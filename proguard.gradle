@@ -10,7 +10,7 @@ buildscript {
     }
 }
 
-task("obfuscateArtifact", type: ProGuardTask, dependsOn: jar) {
+task("obfuscateArtifact", type: ProGuardTask, dependsOn: tasks.shadowJar) {
     description = "Obfuscates source files"
 
     def artifactName = "release.jar"

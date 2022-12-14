@@ -1,7 +1,9 @@
+apply(from = "packaging.gradle")
 apply(from = "proguard.gradle")
 
 plugins {
     kotlin("jvm") version "1.6.10"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 repositories {
@@ -14,6 +16,7 @@ repositories {
 dependencies {
     implementation("com.cereal-automation:cereal-api:0.1.0")
     implementation("com.cereal-automation:cereal-licensing:0.1.0")
+
     testImplementation(kotlin("test"))
     testImplementation("com.cereal-automation:cereal-test-utils:0.2.0")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")

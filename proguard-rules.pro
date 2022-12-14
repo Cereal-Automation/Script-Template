@@ -49,10 +49,15 @@
     public static ** valueOf(java.lang.String);
 }
 
-# Keep Script class
+# Keep Script class and configuration
 -keep,allowoptimization public class * extends com.cereal.api.script.Script {
     public <methods>;
 }
 -keep,allowoptimization public class * extends com.cereal.api.script.configuration.ScriptConfiguration {
     public <methods>;
 }
+
+# Keep script signature
+-keepattributes Signature
+
+-ignorewarnings
