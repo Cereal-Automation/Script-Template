@@ -3,6 +3,7 @@
 ## Include java runtime classes
 -libraryjars <java.home>/jmods/java.base.jmod(!**.jar;!module-info.class)
 -libraryjars <java.home>/jmods/java.desktop.jmod(!**.jar;!module-info.class)
+-libraryjars <java.home>/jmods/java.logging.jmod(!**.jar;!module-info.class)
 
 # Don't print notes about reflection in GSON code, the Kotlin runtime, and
 # our own optionally injected code.
@@ -54,4 +55,18 @@
 # Keep script signature
 -keepattributes Signature
 
--ignorewarnings
+## OkHttp
+# JSR 305 annotations are for embedding nullability information.
+-dontwarn javax.annotation.**
+
+# A resource is loaded with a relative path so the package of this class must be preserved.
+-adaptresourcefilenames okhttp3/internal/publicsuffix/PublicSuffixDatabase.gz
+
+# Animal Sniffer compileOnly dependency to ensure APIs are compatible with older versions of Java.
+-dontwarn org.codehaus.mojo.animal_sniffer.*
+
+# OkHttp platform used only on JVM and when Conscrypt and other security providers are available.
+-dontwarn okhttp3.internal.platform.**
+-dontwarn org.conscrypt.**
+-dontwarn org.bouncycastle.**
+-dontwarn org.openjsse.**
