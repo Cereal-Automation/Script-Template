@@ -45,7 +45,7 @@ the following commands in sequence locally or in your custom CI pipeline to get 
 in the Cereal Marketplace:
 
 * `./gradlew jar`
-* `./gradlew obfuscateJar`
+* `./gradlew obfuscateArtifact`
 
 The jar can be found in the `build/obfuscated` folder.
 
