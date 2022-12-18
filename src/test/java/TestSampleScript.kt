@@ -9,6 +9,7 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkConstructor
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withTimeout
 import org.junit.Test
 
 class TestSampleScript {
@@ -33,8 +34,13 @@ class TestSampleScript {
         }
         val componentProvider = TestComponentProvider()
 
-        // Run our script
-        scriptRunner.run(configuration, componentProvider)
+        try {
+            // Run the script with a 10s timeout. This is needed because most scripts don't end within a reasonable time.
+            // If your script is expected to end automatically please remove the surrounding try catch block.
+            withTimeout(10000) { scriptRunner.run(configuration, componentProvider) }
+        } catch(e: Exception) {
+            // Ignore timeouts because they're expected.
+        }
     }
 
 }
