@@ -10,7 +10,6 @@ interface SampleConfiguration : ScriptConfiguration {
         name = "KeyOfString",
         description = "A very long long looooong description text which should describe the function of this configuration"
     )
-    @JvmDefault
     fun keyString(): String {
         return "default"
     }
@@ -20,7 +19,6 @@ interface SampleConfiguration : ScriptConfiguration {
         name = "KeyOfBoolean",
         description = "A very long long looooong description text which should describe the function of this configuration"
     )
-    @JvmDefault
     fun keyBoolean(): Boolean {
         return true
     }
@@ -30,7 +28,6 @@ interface SampleConfiguration : ScriptConfiguration {
         name = "KeyOfInteger",
         description = "A very long long looooong description text which should describe the function of this configuration"
     )
-    @JvmDefault
     fun keyInteger(): Int {
         return 5000
     }
@@ -40,7 +37,6 @@ interface SampleConfiguration : ScriptConfiguration {
         name = "KeyOfFloat",
         description = "A very long long looooong description text which should describe the function of this configuration"
     )
-    @JvmDefault
     fun keyFloat(): Float {
         return 1337.1337f
     }
@@ -50,7 +46,6 @@ interface SampleConfiguration : ScriptConfiguration {
         name = "KeyOfDouble",
         description = "A very long long looooong description text which should describe the function of this configuration"
     )
-    @JvmDefault
     fun keyDouble(): Double {
         return 1337.1337
     }
