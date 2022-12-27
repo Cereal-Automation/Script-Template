@@ -27,7 +27,7 @@ tasks {
     compileKotlin {
         kotlinOptions {
             jvmTarget = "11"
-            freeCompilerArgs = listOf("-Xjvm-default=enable")
+            freeCompilerArgs = listOf("-Xjvm-default=all")
         }
         sourceCompatibility = "11"
     }
@@ -35,7 +35,7 @@ tasks {
     compileTestKotlin {
         kotlinOptions {
             jvmTarget = "11"
-            freeCompilerArgs = listOf("-Xjvm-default=enable")
+            freeCompilerArgs = listOf("-Xjvm-default=all")
         }
         sourceCompatibility = "11"
     }
