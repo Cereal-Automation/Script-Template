@@ -39,7 +39,8 @@
 
 # Preserve the special static methods that are required in all enumeration
 # classes.
--keepclassmembers,allowoptimization enum * {
+-keepclassmembers enum * {
+    <fields>;
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
