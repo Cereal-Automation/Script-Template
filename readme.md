@@ -41,10 +41,9 @@ section.
 
 #### Build binary manually
 If you are not using GitHub (Actions) or don't want to use this way of creating a jar you can execute
-the following commands in sequence locally or in your custom CI pipeline to get a jar that can be used as a release
+the following command locally or in your custom CI pipeline to get a jar that can be used as a release
 in the Cereal Marketplace:
 
-* `./gradlew jar`
 * `./gradlew obfuscateArtifact`
 
 The jar can be found in the `build/obfuscated` folder.
