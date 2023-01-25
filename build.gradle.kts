@@ -14,11 +14,14 @@ repositories {
 }
 
 dependencies {
-    implementation("com.cereal-automation:cereal-api:0.5.0")
+    implementation("com.cereal-automation:cereal-api:0.8.0")
     implementation("com.cereal-automation:cereal-licensing:0.5.0")
 
+    // Other Cereal libraries, uncomment to use them.
+    // implementation("com.cereal-automation:cereal-chrome-driver:0.2.20:all")
+
     testImplementation(kotlin("test"))
-    testImplementation("com.cereal-automation:cereal-test-utils:0.5.0")
+    testImplementation("com.cereal-automation:cereal-test-utils:0.6.0")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     testImplementation("io.mockk:mockk:1.13.2")
 }
@@ -38,9 +41,5 @@ tasks {
             freeCompilerArgs = listOf("-Xjvm-default=all")
         }
         sourceCompatibility = "11"
-    }
-
-    jar {
-        archiveFileName.set("release.jar")
     }
 }
