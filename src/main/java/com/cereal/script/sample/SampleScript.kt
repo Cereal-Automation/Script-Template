@@ -1,10 +1,11 @@
 package com.cereal.script.sample
 
+import com.cereal.api.script.LoopResult
 import com.cereal.api.script.Script
-import com.cereal.api.script.TaskStatus
 import com.cereal.component.ComponentProvider
 import com.cereal.licensechecker.LicenseChecker
 import com.cereal.licensechecker.LicenseState
+import com.cereal_automation.chromedriver.UndetectedChromeDriver
 
 class SampleScript : Script<SampleConfiguration> {
 
@@ -37,10 +38,10 @@ class SampleScript : Script<SampleConfiguration> {
         return licenseResult !is LicenseState.ErrorValidatingLicense
     }
 
-    override suspend fun loop(configuration: SampleConfiguration, provider: ComponentProvider): TaskStatus {
+    override suspend fun loop(configuration: SampleConfiguration, provider: ComponentProvider): LoopResult {
         // Prevent execution when user is not licensed.
         if(!isLicensed) {
-            return TaskStatus.Error("Unlicensed")
+            return LoopResult.Error("Unlicensed")
         }
 
         provider.logger().info("Found boolean config value: ${configuration.keyBoolean()}")
@@ -48,7 +49,7 @@ class SampleScript : Script<SampleConfiguration> {
         provider.logger().info("Found float config value: ${configuration.keyFloat()}")
         provider.logger().info("Found string config value: ${configuration.keyString()}")
 
-        return TaskStatus.Success("Printed configuration")
+        return LoopResult.Success("Printed configuration")
     }
 
     override suspend fun onFinish(configuration: SampleConfiguration, provider: ComponentProvider) {
