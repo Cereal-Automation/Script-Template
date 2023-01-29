@@ -18,7 +18,7 @@ dependencies {
     implementation("com.cereal-automation:cereal-licensing:0.5.0")
 
     // Other Cereal libraries, uncomment to use them.
-    // implementation("com.cereal-automation:cereal-chrome-driver:0.2.20:all")
+    // implementation("com.cereal-automation:cereal-chrome-driver:0.2.21:all")
 
     testImplementation(kotlin("test"))
     testImplementation("com.cereal-automation:cereal-test-utils:0.6.0")
