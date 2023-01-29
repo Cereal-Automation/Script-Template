@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.cereal-automation:cereal-api:0.8.0")
+    implementation("com.cereal-automation:cereal-api:0.9.0:all")
     implementation("com.cereal-automation:cereal-licensing:0.5.0")
 
     // Other Cereal libraries, uncomment to use them.
