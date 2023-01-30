@@ -5,7 +5,6 @@ import com.cereal.api.script.Script
 import com.cereal.component.ComponentProvider
 import com.cereal.licensechecker.LicenseChecker
 import com.cereal.licensechecker.LicenseState
-import com.cereal_automation.chromedriver.UndetectedChromeDriver
 
 class SampleScript : Script<SampleConfiguration> {
 
