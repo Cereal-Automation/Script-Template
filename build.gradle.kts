@@ -2,7 +2,7 @@ apply(from = "packaging.gradle")
 apply(from = "proguard.gradle")
 
 plugins {
-    kotlin("jvm") version "1.6.10"
+    kotlin("jvm") version "1.8.10"
     id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
@@ -32,7 +32,6 @@ tasks {
             jvmTarget = "11"
             freeCompilerArgs = listOf("-Xjvm-default=all")
         }
-        sourceCompatibility = "11"
     }
 
     compileTestKotlin {
@@ -40,6 +39,5 @@ tasks {
             jvmTarget = "11"
             freeCompilerArgs = listOf("-Xjvm-default=all")
         }
-        sourceCompatibility = "11"
     }
 }
