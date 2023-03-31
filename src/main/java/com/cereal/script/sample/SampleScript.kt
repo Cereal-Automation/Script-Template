@@ -43,6 +43,8 @@ class SampleScript : Script<SampleConfiguration> {
             return LoopResult.Error("Unlicensed")
         }
 
+        statusUpdate("Start printing configuration...")
+
         provider.logger().info("Found boolean config value: ${configuration.keyBoolean()}")
         provider.logger().info("Found integer config value: ${configuration.keyInteger()}")
         provider.logger().info("Found float config value: ${configuration.keyFloat()}")
