@@ -14,14 +14,14 @@ repositories {
 }
 
 dependencies {
-    implementation("com.cereal-automation:cereal-api:0.9.0:all")
+    implementation("com.cereal-automation:cereal-api:0.13.0:all")
     implementation("com.cereal-automation:cereal-licensing:0.5.0")
 
     // Other Cereal libraries, uncomment to use them.
     // implementation("com.cereal-automation:cereal-chrome-driver:0.2.21:all")
 
     testImplementation(kotlin("test"))
-    testImplementation("com.cereal-automation:cereal-test-utils:0.6.0")
+    testImplementation("com.cereal-automation:cereal-test-utils:0.7.0")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     testImplementation("io.mockk:mockk:1.13.2")
 }

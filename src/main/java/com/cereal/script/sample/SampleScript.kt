@@ -37,7 +37,7 @@ class SampleScript : Script<SampleConfiguration> {
         return licenseResult !is LicenseState.ErrorValidatingLicense
     }
 
-    override suspend fun loop(configuration: SampleConfiguration, provider: ComponentProvider): LoopResult {
+    override suspend fun loop(configuration: SampleConfiguration, provider: ComponentProvider, statusUpdate: suspend (message: String) -> Unit): LoopResult {
         // Prevent execution when user is not licensed.
         if(!isLicensed) {
             return LoopResult.Error("Unlicensed")
