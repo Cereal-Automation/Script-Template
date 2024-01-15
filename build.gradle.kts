@@ -2,41 +2,41 @@ apply(from = "packaging.gradle")
 apply(from = "proguard.gradle")
 
 plugins {
-    kotlin("jvm") version "1.8.10"
-    id("com.github.johnrengelman.shadow") version "7.1.2"
+    kotlin("jvm") version "1.9.22"
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 repositories {
     maven {
-        url = uri("https://repo.repsy.io/mvn/cereal/release")
+        url = uri("https://maven.cereal-automation.com/releases")
     }
     mavenCentral()
 }
 
 dependencies {
-    implementation("com.cereal-automation:cereal-api:0.13.0:all")
-    implementation("com.cereal-automation:cereal-licensing:0.5.0")
+    implementation("com.cereal-automation:cereal-api:0.16.0:all")
+    implementation("com.cereal-automation:cereal-licensing:0.6.0")
 
     // Other Cereal libraries, uncomment to use them.
-    // implementation("com.cereal-automation:cereal-chrome-driver:0.2.21:all")
+    // implementation("com.cereal-automation:cereal-chrome-driver:0.11.0:all")
 
     testImplementation(kotlin("test"))
-    testImplementation("com.cereal-automation:cereal-test-utils:0.7.0")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-    testImplementation("io.mockk:mockk:1.13.2")
+    testImplementation("com.cereal-automation:cereal-test-utils:0.16.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    testImplementation("io.mockk:mockk:1.13.9")
 }
 
 tasks {
     compileKotlin {
         kotlinOptions {
-            jvmTarget = "11"
+            jvmTarget = "17"
             freeCompilerArgs = listOf("-Xjvm-default=all")
         }
     }
 
     compileTestKotlin {
         kotlinOptions {
-            jvmTarget = "11"
+            jvmTarget = "17"
             freeCompilerArgs = listOf("-Xjvm-default=all")
         }
     }

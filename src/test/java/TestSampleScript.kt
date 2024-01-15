@@ -3,7 +3,7 @@ import com.cereal.licensechecker.LicenseState
 import com.cereal.script.sample.SampleConfiguration
 import com.cereal.script.sample.SampleScript
 import com.cereal.test.TestScriptRunner
-import com.cereal.test.components.TestComponentProvider
+import com.cereal.test.components.TestComponentProviderFactory
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
@@ -32,12 +32,12 @@ class TestSampleScript {
             every { keyFloat() } returns 101.0f
             every { keyDouble() } returns 102.0
         }
-        val componentProvider = TestComponentProvider()
+        val componentProviderFactory = TestComponentProviderFactory()
 
         try {
             // Run the script with a 10s timeout. This is needed because most scripts don't end within a reasonable time.
             // If your script is expected to end automatically please remove the surrounding try catch block.
-            withTimeout(10000) { scriptRunner.run(configuration, componentProvider) }
+            withTimeout(10000) { scriptRunner.run(configuration, componentProviderFactory) }
         } catch(e: Exception) {
             // Ignore timeouts because they're expected.
         }
