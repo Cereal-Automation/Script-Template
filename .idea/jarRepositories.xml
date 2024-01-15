@@ -19,7 +19,7 @@
     <remote-repository>
       <option name="id" value="maven" />
       <option name="name" value="maven" />
-      <option name="url" value="https://repo.repsy.io/mvn/cereal/release" />
+      <option name="url" value="https://maven.cereal-automation.com/releases" />
     </remote-repository>
   </component>
 </project>
