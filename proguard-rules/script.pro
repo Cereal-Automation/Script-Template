@@ -45,16 +45,12 @@
     public static ** valueOf(java.lang.String);
 }
 
-# Keep Script class and configuration
+# Keep entry point of script so it's not removed when minimizing
 -keep,allowoptimization public class * extends com.cereal.sdk.script.Script {
     public <methods>;
 }
--keep,allowoptimization public class * extends com.cereal.sdk.script.ChildScript {
-    public <methods>;
-}
--keep,allowoptimization public class * extends com.cereal.sdk.script.configuration.ScriptConfiguration {
-    public <methods>;
-}
+# Keep the SDK signature intact
+-keep class com.cereal.sdk.** { *; }
 
 # Keep script signature
 -keepattributes Signature
