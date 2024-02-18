@@ -1,7 +1,7 @@
 package com.cereal.script.sample
 
-import com.cereal.api.script.configuration.ScriptConfiguration
-import com.cereal.api.script.configuration.ScriptConfigurationItem
+import com.cereal.sdk.script.configuration.ScriptConfiguration
+import com.cereal.sdk.script.configuration.ScriptConfigurationItem
 
 interface SampleConfiguration : ScriptConfiguration {
 

@@ -46,13 +46,13 @@
 }
 
 # Keep Script class and configuration
--keep,allowoptimization public class * extends com.cereal.api.script.Script {
+-keep,allowoptimization public class * extends com.cereal.sdk.script.Script {
     public <methods>;
 }
--keep,allowoptimization public class * extends com.cereal.api.script.ChildScript {
+-keep,allowoptimization public class * extends com.cereal.sdk.script.ChildScript {
     public <methods>;
 }
--keep,allowoptimization public class * extends com.cereal.api.script.configuration.ScriptConfiguration {
+-keep,allowoptimization public class * extends com.cereal.sdk.script.configuration.ScriptConfiguration {
     public <methods>;
 }
 

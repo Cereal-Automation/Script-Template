@@ -6,7 +6,7 @@ shadowJar {
         // The below dependencies are included in the Cereal client by default. New (breaking) versions will have a different artifact id.
         exclude { dependency ->
             dependency.moduleGroup == "com.cereal-automation" &&
-                    (dependency.moduleName == "cereal-api" || dependency.moduleName == "cereal-chrome-driver")
+                    (dependency.moduleName == "cereal-sdk" || dependency.moduleName == "cereal-chrome-driver")
         }
 
         // Exclude some meta data.

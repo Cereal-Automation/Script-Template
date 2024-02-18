@@ -1,8 +1,8 @@
 package com.cereal.script.sample
 
-import com.cereal.api.script.LoopResult
-import com.cereal.api.script.Script
-import com.cereal.component.ComponentProvider
+import com.cereal.sdk.script.LoopResult
+import com.cereal.sdk.script.Script
+import com.cereal.sdk.component.ComponentProvider
 import com.cereal.licensechecker.LicenseChecker
 import com.cereal.licensechecker.LicenseState
 
