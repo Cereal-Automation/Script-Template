@@ -1,10 +1,10 @@
 package com.cereal.script.sample
 
-import com.cereal.sdk.script.LoopResult
-import com.cereal.sdk.script.Script
-import com.cereal.sdk.component.ComponentProvider
 import com.cereal.licensechecker.LicenseChecker
 import com.cereal.licensechecker.LicenseState
+import com.cereal.sdk.component.ComponentProvider
+import com.cereal.sdk.script.ExecutionResult
+import com.cereal.sdk.script.Script
 
 // TODO: Replace this with the script's public key. This can be found in the Cereal Developer Console.
 private const val SCRIPT_PUBLIC_KEY = "-----BEGIN PUBLIC KEY-----\n" +
@@ -38,10 +38,10 @@ class SampleScript : Script<SampleConfiguration> {
         return licenseResult !is LicenseState.ErrorValidatingLicense
     }
 
-    override suspend fun loop(configuration: SampleConfiguration, provider: ComponentProvider, statusUpdate: suspend (message: String) -> Unit): LoopResult {
+    override suspend fun execute(configuration: SampleConfiguration, provider: ComponentProvider, statusUpdate: suspend (message: String) -> Unit): ExecutionResult {
         // Prevent execution when user is not licensed.
         if(!isLicensed) {
-            return LoopResult.Error("Unlicensed")
+            return ExecutionResult.Error("Unlicensed")
         }
 
         statusUpdate("Start printing configuration...")
@@ -51,7 +51,7 @@ class SampleScript : Script<SampleConfiguration> {
         provider.logger().info("Found float config value: ${configuration.keyFloat()}")
         provider.logger().info("Found string config value: ${configuration.keyString()}")
 
-        return LoopResult.Success("Printed configuration")
+        return ExecutionResult.Success("Printed configuration")
     }
 
     override suspend fun onFinish(configuration: SampleConfiguration, provider: ComponentProvider) {
