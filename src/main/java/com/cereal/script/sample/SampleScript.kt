@@ -3,8 +3,8 @@ package com.cereal.script.sample
 import com.cereal.licensechecker.LicenseChecker
 import com.cereal.licensechecker.LicenseState
 import com.cereal.sdk.component.ComponentProvider
-import com.cereal.sdk.script.ExecutionResult
-import com.cereal.sdk.script.Script
+import com.cereal.sdk.ExecutionResult
+import com.cereal.sdk.Script
 
 // TODO: Replace this with the script's public key. This can be found in the Cereal Developer Console.
 private const val SCRIPT_PUBLIC_KEY = "-----BEGIN PUBLIC KEY-----\n" +

@@ -46,7 +46,7 @@
 }
 
 # Keep entry point of script so it's not removed when minimizing
--keep,allowoptimization public class * extends com.cereal.sdk.script.Script {
+-keep,allowoptimization public class * extends com.cereal.sdk.Script {
     public <methods>;
 }
 # Keep the SDK signature intact
