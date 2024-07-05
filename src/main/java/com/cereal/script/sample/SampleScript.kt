@@ -46,10 +46,10 @@ class SampleScript : Script<SampleConfiguration> {
 
         statusUpdate("Start printing configuration...")
 
-        provider.logger().info("Found boolean config value: ${configuration.keyBoolean()}")
-        provider.logger().info("Found integer config value: ${configuration.keyInteger()}")
-        provider.logger().info("Found float config value: ${configuration.keyFloat()}")
-        provider.logger().info("Found string config value: ${configuration.keyString()}")
+        provider.logger().info("Found boolean config value: ${configuration.booleanValue()}")
+        provider.logger().info("Found integer config value: ${configuration.integerValue()}")
+        provider.logger().info("Found float config value: ${configuration.floatValue()}")
+        provider.logger().info("Found string config value: ${configuration.nullableStringValue()}")
 
         return ExecutionResult.Success("Printed configuration")
     }

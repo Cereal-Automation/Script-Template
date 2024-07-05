@@ -2,51 +2,64 @@ package com.cereal.script.sample
 
 import com.cereal.sdk.ScriptConfiguration
 import com.cereal.sdk.ScriptConfigurationItem
+import com.cereal.sdk.TaskConfigurationItem
+import com.cereal.sdk.models.proxy.Proxy
 
 interface SampleConfiguration : ScriptConfiguration {
 
     @ScriptConfigurationItem(
-        keyName = "StringKey",
-        name = "KeyOfString",
-        description = "A very long long looooong description text which should describe the function of this configuration"
+        keyName = "NullableStringKey",
+        name = "Nullable String",
+        description = "Text field allowing empty. This string is marked as nullable and is optional for the user to fill in."
     )
-    fun keyString(): String {
-        return "default"
-    }
+    fun nullableStringValue(): String?
 
     @ScriptConfigurationItem(
         keyName = "BooleanKey",
-        name = "KeyOfBoolean",
-        description = "A very long long looooong description text which should describe the function of this configuration"
+        name = "Boolean",
+        description = "This is a boolean field showing a switch the user can click to enable."
     )
-    fun keyBoolean(): Boolean {
-        return true
-    }
+    fun booleanValue(): Boolean
 
     @ScriptConfigurationItem(
         keyName = "IntegerKey",
-        name = "KeyOfInteger",
-        description = "A very long long looooong description text which should describe the function of this configuration"
+        name = "Integer",
+        description = "This is an integer field where you can only enter numbers."
     )
-    fun keyInteger(): Int {
-        return 5000
-    }
+    fun integerValue(): Int
 
     @ScriptConfigurationItem(
         keyName = "FloatingKey",
-        name = "KeyOfFloat",
-        description = "A very long long looooong description text which should describe the function of this configuration"
+        name = "Float",
+        description = "This is a float field where you can only enter numbers and a separator."
     )
-    fun keyFloat(): Float {
-        return 1337.1337f
-    }
+    fun floatValue(): Float
 
     @ScriptConfigurationItem(
         keyName = "DoubleKey",
-        name = "KeyOfDouble",
-        description = "A very long long looooong description text which should describe the function of this configuration"
+        name = "Double",
+        description = "This is a double field where you can only enter numbers and a separator."
     )
-    fun keyDouble(): Double {
-        return 1337.1337
-    }
+    fun doubleValue(): Double
+
+    @TaskConfigurationItem(
+        keyName = "Proxies",
+        name = "Proxies",
+        description = "Select or upload proxies based on template, one proxy per task."
+    )
+    fun proxyValue(): Proxy
+
+    @TaskConfigurationItem(
+        keyName = "UsernameKey",
+        name = "Username",
+        description = "Select or upload a list with usernames, one per task.",
+    )
+    fun usernameValue(): String
+
+    @TaskConfigurationItem(
+        keyName = "PasswordKey",
+        name = "Password",
+        description = "Select or upload a list with password, one per task.",
+    )
+    fun passwordValue(): String
 }
