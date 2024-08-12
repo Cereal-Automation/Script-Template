@@ -2,7 +2,6 @@ package com.cereal.script.sample
 
 import com.cereal.sdk.ScriptConfiguration
 import com.cereal.sdk.ScriptConfigurationItem
-import com.cereal.sdk.TaskConfigurationItem
 import com.cereal.sdk.models.proxy.Proxy
 
 interface SampleConfiguration : ScriptConfiguration {
@@ -42,24 +41,27 @@ interface SampleConfiguration : ScriptConfiguration {
     )
     fun doubleValue(): Double
 
-    @TaskConfigurationItem(
+    @ScriptConfigurationItem(
         keyName = "Proxies",
         name = "Proxies",
-        description = "Select or upload proxies based on template, one proxy per task."
+        description = "Select or upload proxies based on template, one proxy per task.",
+        valuePerTask = true
     )
     fun proxyValue(): Proxy
 
-    @TaskConfigurationItem(
+    @ScriptConfigurationItem(
         keyName = "UsernameKey",
         name = "Username",
         description = "Select or upload a list with usernames, one per task.",
+        valuePerTask = true
     )
     fun usernameValue(): String
 
-    @TaskConfigurationItem(
+    @ScriptConfigurationItem(
         keyName = "PasswordKey",
         name = "Password",
         description = "Select or upload a list with password, one per task.",
+        valuePerTask = true
     )
     fun passwordValue(): String
 }
