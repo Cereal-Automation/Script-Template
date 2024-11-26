@@ -1,16 +1,64 @@
-apply(from = "packaging.gradle")
-apply(from = "proguard.gradle")
-
 plugins {
-    kotlin("jvm") version "1.9.22"
-    id("com.github.johnrengelman.shadow") version "8.1.1"
+    kotlin("jvm") version "2.0.21"
+    id("com.gradleup.shadow") version "8.3.5"
 }
 
-repositories {
-    maven {
-        url = uri("https://maven.cereal-automation.com/releases")
+allprojects {
+    repositories {
+        mavenCentral()
+        maven {
+            url = uri("https://maven.cereal-automation.com/releases")
+        }
     }
-    mavenCentral()
+
+    apply(plugin = "com.gradleup.shadow")
+
+    tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
+        archiveFileName.set("release.jar")
+
+        dependencies {
+            // The below dependencies are included in the Cereal client by default. New (breaking) versions will have a different artifact id.
+            exclude { dependency ->
+                dependency.moduleGroup == "com.cereal-automation" &&
+                    (dependency.moduleName == "cereal-sdk" || dependency.moduleName == "cereal-chrome-driver")
+            }
+
+            // Kotlin is included in the Cereal client by default so leave it out to make the script binary smaller and to
+            // prevent conflicts with coroutines, which is also used in the Scripts' interface.
+            exclude("DebugProbesKt.bin", "META-INF/**", "*.jpg", "kotlin/**")
+        }
+    }
+
+    tasks.register("scriptJar", proguard.gradle.ProGuardTask::class.java) {
+        description = "Build script jar with obfuscation"
+
+        val artifactName = "release.jar"
+        val buildDir = layout.buildDirectory.get()
+        val cerealScriptFolder = "$buildDir/cereal"
+
+        injars("$buildDir/libs/$artifactName")
+        outjars("$cerealScriptFolder/$artifactName")
+
+        // Mapping for debugging
+        printseeds("$cerealScriptFolder/seeds.txt")
+        printmapping("$cerealScriptFolder/mapping.txt")
+
+        // Dependencies
+        libraryjars(sourceSets.main.get().compileClasspath)
+
+        configuration(
+            files(
+                "${rootDir.absolutePath}/proguard-rules/script.pro",
+                "${rootDir.absolutePath}/proguard-rules/cereal-licensing.pro",
+            ),
+        )
+    }
+}
+
+buildscript {
+    dependencies {
+        classpath("com.guardsquare:proguard-gradle:7.6.0")
+    }
 }
 
 dependencies {
@@ -27,21 +75,9 @@ dependencies {
 }
 
 tasks {
-    compileKotlin {
-        kotlinOptions {
-            jvmTarget = "17"
-            freeCompilerArgs = listOf("-Xjvm-default=all")
-        }
-    }
-
-    compileTestKotlin {
-        kotlinOptions {
-            jvmTarget = "17"
-            freeCompilerArgs = listOf("-Xjvm-default=all")
-        }
-    }
-
     kotlin {
-        jvmToolchain(17)
+        jvmToolchain {
+            languageVersion.set(JavaLanguageVersion.of(17))
+        }
     }
 }

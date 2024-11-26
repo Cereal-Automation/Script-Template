@@ -44,12 +44,12 @@ If you are not using GitHub (Actions) or don't want to use this way of creating 
 the following command locally or in your custom CI pipeline to get a jar that can be used as a release
 in the Cereal Marketplace:
 
-* `./gradlew obfuscateArtifact`
+* `./gradlew scriptJar`
 
-The jar can be found in the `build/obfuscated` folder.
+The jar can be found in the `build/cereal` folder.
 
 ### CI/CD
 A GitHub actions configuration is included in this repository. It contains the following actions:
 
 * On each push to master tests will run.
-* When a tag is created an obfuscated release JAR is generated.
+* When a tag is created an script release JAR is generated.
