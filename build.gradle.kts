@@ -31,6 +31,7 @@ allprojects {
 
     tasks.register("scriptJar", proguard.gradle.ProGuardTask::class.java) {
         description = "Build script jar with obfuscation"
+        dependsOn("shadowJar")
 
         val artifactName = "release.jar"
         val buildDir = layout.buildDirectory.get()
