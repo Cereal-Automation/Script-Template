@@ -29,4 +29,4 @@ jobs:
       - name: Test
         run: ./gradlew test
       - name: Smoke test build
-        run: ./gradlew obfuscateArtifact
+        run: ./gradlew scriptJar
