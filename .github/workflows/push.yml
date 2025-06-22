@@ -26,6 +26,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: 17
+          distribution: jetbrains
       - name: Test
         run: ./gradlew test
       - name: Smoke test build
