@@ -17,8 +17,8 @@ git clone https://github.com/Your-Org/Script-Repo-Name.git
 * You'll need to update the script name in several files:
   * `settings.gradle.kts` update rootProject.name.
   * `.idea/.name` update the file content.
-* Update package_name, name and version in `src/main/resources/manifest.json`.
 * Rename the package `com.cereal.script.sample` to something you like.
+* Update package_name, name, version and script in `src/main/resources/manifest.json`.
 
 ## Usage
 * The repository contains a SampleScript class which is the main entrance for Cereal to start your script. Remove any boilerplate code from that class that you don't need and rename the script to something more descriptive. Do the same for SampleConfiguration.
