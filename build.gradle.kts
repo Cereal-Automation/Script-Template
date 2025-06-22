@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm") version "2.0.21"
-    id("com.gradleup.shadow") version "8.3.5"
+    id("com.gradleup.shadow") version "8.3.6"
 }
 
 allprojects {
@@ -63,21 +63,18 @@ allprojects {
 
 buildscript {
     dependencies {
-        classpath("com.guardsquare:proguard-gradle:7.6.0")
+        classpath("com.guardsquare:proguard-gradle:7.7.0")
     }
 }
 
 dependencies {
-    implementation("com.cereal-automation:cereal-sdk:1.2.0:all")
-    implementation("com.cereal-automation:cereal-licensing:1.2.0")
-
-    // Other Cereal libraries, uncomment to use them.
-    // implementation("com.cereal-automation:cereal-chrome-driver:0.11.0:all")
+    implementation("com.cereal-automation:cereal-sdk:1.6.1:all")
+    implementation("com.cereal-automation:cereal-licensing:1.6.1")
 
     testImplementation(kotlin("test"))
-    testImplementation("com.cereal-automation:cereal-test-utils:1.2.0")
+    testImplementation("com.cereal-automation:cereal-test-utils:1.6.1")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-    testImplementation("io.mockk:mockk:1.13.9")
+    testImplementation("io.mockk:mockk:1.14.2")
 }
 
 tasks {
