@@ -60,3 +60,9 @@ A GitHub actions configuration is included in this repository. It contains the f
 
 * On each push to master tests will run.
 * When a tag is created a script release JAR is generated and a GitHub Release is automatically created with the JAR attached.
+
+## Additional Resources
+For more detailed information on script development and publishing to the Cereal Marketplace:
+* [Cereal Developer Documentation](https://docs.cereal-automation.com/)
+* [Publishing Scripts Guide](https://docs.cereal-automation.com/developers/publishing/) - Learn how to publish your script to the Cereal Marketplace
+
