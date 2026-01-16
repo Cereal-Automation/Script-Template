@@ -35,9 +35,16 @@ git clone https://github.com/Your-Org/Script-Repo-Name.git
 First update the script version in `src/main/resources/manifest.json`
 
 #### Build binary using GitHub Actions
-Next, the easiest way to build the script binary is by creating a git tag. This will trigger GitHub Actions to build a jar and
-obfuscate it. This jar is uploaded as artifact and is therefore available in the [GitHub Actions Artifacts](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts)
-section.
+Next, the easiest way to build the script binary is by creating a git tag. This will trigger GitHub Actions to build a jar,
+obfuscate it, and automatically create a GitHub Release with the jar attached as an artifact. You can find the release
+on the [GitHub Releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases) page of
+your repository.
+
+To create a release:
+1. Update the version in `src/main/resources/manifest.json`
+2. Commit and push your changes
+3. Create and push a tag: `git tag v1.0.0 && git push origin v1.0.0`
+4. The workflow will automatically build and create a GitHub Release using the tag as the version, with `release-<version>.jar` attached
 
 #### Build binary manually
 If you are not using GitHub (Actions) or don't want to use this way of creating a jar you can execute
@@ -52,4 +59,4 @@ The jar can be found in the `build/cereal` folder.
 A GitHub actions configuration is included in this repository. It contains the following actions:
 
 * On each push to master tests will run.
-* When a tag is created an script release JAR is generated.
+* When a tag is created a script release JAR is generated and a GitHub Release is automatically created with the JAR attached.
