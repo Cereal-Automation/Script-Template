@@ -45,7 +45,6 @@ interface SampleConfiguration : ScriptConfiguration {
         keyName = "Proxies",
         name = "Proxies",
         description = "Select or upload proxies based on template, one proxy per task.",
-        valuePerTask = true
     )
     fun proxyValue(): Proxy
 
