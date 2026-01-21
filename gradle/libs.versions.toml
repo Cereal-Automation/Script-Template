@@ -2,7 +2,7 @@
 kotlin = "2.2.0"
 shadow = "8.3.6"
 proguard = "7.7.0"
-cereal = "1.6.1"
+cereal = "1.7.1"
 kotlinx-coroutines = "1.7.3"
 mockk = "1.14.2"
 
