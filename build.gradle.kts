@@ -1,6 +1,6 @@
 plugins {
-    kotlin("jvm") version "2.2.0"
-    id("com.gradleup.shadow") version "8.3.6"
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.shadow)
 }
 
 allprojects {
@@ -62,18 +62,22 @@ allprojects {
 
 buildscript {
     dependencies {
-        classpath("com.guardsquare:proguard-gradle:7.7.0")
+        classpath(libs.proguard.gradle)
     }
 }
 
 dependencies {
-    implementation("com.cereal-automation:cereal-sdk:1.6.1:all")
-    implementation("com.cereal-automation:cereal-licensing:1.6.1")
+    implementation(libs.cereal.sdk) {
+        artifact {
+            classifier = "all"
+        }
+    }
+    implementation(libs.cereal.licensing)
 
     testImplementation(kotlin("test"))
-    testImplementation("com.cereal-automation:cereal-test-utils:1.6.1")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-    testImplementation("io.mockk:mockk:1.14.2")
+    testImplementation(libs.cereal.test.utils)
+    testImplementation(libs.kotlinx.coroutines.core)
+    testImplementation(libs.mockk)
 }
 
 tasks {
