@@ -18,7 +18,7 @@ git clone https://github.com/Your-Org/Script-Repo-Name.git
   * `settings.gradle.kts` update rootProject.name.
   * `.idea/.name` update the file content.
 * Rename the package `com.cereal.script.sample` to something you like.
-* Update package_name, name, version and script in `src/main/resources/manifest.json`.
+* Update package_name, name and script in `src/main/resources/manifest.json`.
 
 ## Usage
 * The repository contains a SampleScript class which is the main entrance for Cereal to start your script. Remove any boilerplate code from that class that you don't need and rename the script to something more descriptive. Do the same for SampleConfiguration.
@@ -31,29 +31,17 @@ git clone https://github.com/Your-Org/Script-Repo-Name.git
 ./gradlew test
 ```
 
-### Creating a release
-First update the script version in `src/main/resources/manifest.json`
+### Creating a release using GitHub Actions
 
-#### Build binary using GitHub Actions
-Next, the easiest way to build the script binary is by creating a git tag. This will trigger GitHub Actions to build a jar,
+The easiest way to build the script binary is by creating a git tag. This will trigger GitHub Actions to build a jar, update the version_code,
 obfuscate it, and automatically create a GitHub Release with the jar attached as an artifact. You can find the release
 on the [GitHub Releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases) page of
 your repository.
 
 To create a release:
-1. Update the version in `src/main/resources/manifest.json`
-2. Commit and push your changes
-3. Create and push a tag: `git tag v1.0.0 && git push origin v1.0.0`
-4. The workflow will automatically build and create a GitHub Release using the tag as the version, with `release-<version>.jar` attached
-
-#### Build binary manually
-If you are not using GitHub (Actions) or don't want to use this way of creating a jar you can execute
-the following command locally or in your custom CI pipeline to get a jar that can be used as a release
-in the Cereal Marketplace:
-
-* `./gradlew scriptJar`
-
-The jar can be found in the `build/cereal` folder.
+1. Commit and push your changes
+2. Create and push a tag: `git tag v1.0.0 && git push origin v1.0.0`
+3. The workflow will automatically build and create a GitHub Release using the tag as the version, with `release-<version>.jar` attached
 
 ### CI/CD
 A GitHub actions configuration is included in this repository. It contains the following actions:
