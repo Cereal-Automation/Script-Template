@@ -1,3 +1,6 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import proguard.gradle.ProGuardTask
+
 plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.shadow)
@@ -11,19 +14,21 @@ allprojects {
         }
     }
 
-    apply(plugin = "com.gradleup.shadow")
-
-    tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
-        archiveFileName.set("release.jar")
-
-        dependencies {
-            // Kotlin is included in the Cereal client by default so leave it out to make the script binary smaller and to
-            // prevent conflicts with coroutines, which is also used in the Scripts' interface.
-            exclude("DebugProbesKt.bin", "META-INF/**", "*.jpg", "kotlin/**")
+    // Exclude these dependencies because they are already included in the Cereal client.
+    configurations.configureEach {
+        if (name == "runtimeClasspath") {
+            exclude(group = "org.jetbrains.kotlin", module = "kotlin-stdlib")
+            exclude(group = "com.cereal-automation", module = "cereal-sdk")
         }
     }
 
-    tasks.register("scriptJar", proguard.gradle.ProGuardTask::class.java) {
+    apply(plugin = "com.gradleup.shadow")
+
+    tasks.withType<ShadowJar> {
+        archiveFileName.set("release.jar")
+    }
+
+    tasks.register("scriptJar", ProGuardTask::class.java) {
         description = "Build script jar with obfuscation"
         dependsOn("shadowJar")
 
@@ -57,11 +62,13 @@ buildscript {
 }
 
 dependencies {
+    // These dependencies are added as compileOnly because they are already included in the Cereal client.
     compileOnly(libs.cereal.sdk) {
         artifact {
             classifier = "all"
         }
     }
+    compileOnly(libs.kotlin.stdlib)
     implementation(libs.cereal.licensing)
 
     testImplementation(kotlin("test"))
