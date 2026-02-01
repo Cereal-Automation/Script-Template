@@ -15,11 +15,9 @@ allprojects {
     }
 
     // Exclude these dependencies because they are already included in the Cereal client.
-    configurations.configureEach {
-        if (name == "runtimeClasspath") {
-            exclude(group = "org.jetbrains.kotlin", module = "kotlin-stdlib")
-            exclude(group = "com.cereal-automation", module = "cereal-sdk")
-        }
+    configurations.runtimeClasspath {
+        exclude(group = "org.jetbrains.kotlin", module = "kotlin-stdlib")
+        exclude(group = "com.cereal-automation", module = "cereal-sdk")
     }
 
     apply(plugin = "com.gradleup.shadow")
