@@ -62,7 +62,7 @@ buildscript {
 }
 
 dependencies {
-    // These dependencies are added as compileOnly because they are already included in the Cereal client.
+    // These dependencies are added as compileOnly because they are available in the environment where the scripts run.
     compileOnly(libs.cereal.sdk) {
         artifact {
             classifier = "all"
@@ -71,6 +71,7 @@ dependencies {
     compileOnly(libs.kotlin.stdlib)
     implementation(libs.cereal.licensing)
 
+    testImplementation(libs.cereal.sdk)
     testImplementation(kotlin("test"))
     testImplementation(libs.cereal.test.utils)
     testImplementation(libs.kotlinx.coroutines.core)
