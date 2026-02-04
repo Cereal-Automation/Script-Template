@@ -14,7 +14,7 @@ allprojects {
         }
     }
 
-    // Exclude these dependencies because they are added as compileOnly.
+    // Exclude these dependencies because they are available in cereal script runtime.
     configurations.runtimeClasspath {
         exclude(group = "org.jetbrains.kotlin", module = "kotlin-stdlib")
         exclude(group = "com.cereal-automation", module = "cereal-sdk")
@@ -60,13 +60,7 @@ buildscript {
 }
 
 dependencies {
-    // These dependencies are added as compileOnly because they are available in the environment where the scripts run.
-    compileOnly(libs.cereal.sdk) {
-        artifact {
-            classifier = "all"
-        }
-    }
-    compileOnly(libs.kotlin.stdlib)
+    implementation(libs.cereal.sdk)
     implementation(libs.cereal.licensing)
 
     testImplementation(libs.cereal.sdk)
