@@ -61,10 +61,6 @@ buildscript {
 
 val cerealSdkVersion = libs.versions.cereal.sdk.get()
 
-sourceSets.main {
-    resources.srcDirs("src/main/resources")
-}
-
 tasks.processResources {
     filesMatching("manifest.json") {
         filter { line -> line.replace("@cereal-sdk-version@", cerealSdkVersion) }
