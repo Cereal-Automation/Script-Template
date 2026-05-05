@@ -59,6 +59,14 @@ buildscript {
     }
 }
 
+val cerealSdkVersion = libs.versions.cereal.sdk.get()
+
+tasks.processResources {
+    filesMatching("manifest.json") {
+        filter { line -> line.replace("@cereal-sdk-version@", cerealSdkVersion) }
+    }
+}
+
 dependencies {
     implementation(libs.cereal.sdk)
     implementation(libs.cereal.licensing)
